@@ -545,22 +545,32 @@
                 onStepEnter(activeStep);
             }, duration + delay);
             
+
+
             return el;
         };
         
         // `prev` API function goes to previous step (in document order)
         var prev = function () {
-            var prev = steps.indexOf( activeStep ) - 1;
-            prev = prev >= 0 ? steps[ prev ] : steps[ steps.length-1 ];
-            
+            var prev = steps.indexOf( activeStep ) - 1,
+            prevId=activeStep.getAttribute('data-prev')||'';
+            if(prevId){
+                prev = $('#'+prevId) ;
+            }else{
+               prev = prev >= 0 ? steps[ prev ] : steps[ steps.length-1 ]; 
+            }
             return goto(prev);
         };
         
         // `next` API function goes to next step (in document order)
         var next = function () {
-            var next = steps.indexOf( activeStep ) + 1;
-            next = next < steps.length ? steps[ next ] : steps[ 0 ];
-            
+            var next = steps.indexOf( activeStep ) + 1,
+            nextId=activeStep.getAttribute('data-next')||'';
+            if(nextId){
+               next = $('#'+nextId) 
+            }else{
+                 next = next < steps.length ? steps[ next ] : steps[ 0 ];
+            }
             return goto(next);
         };
         

@@ -553,7 +553,7 @@
         // `prev` API function goes to previous step (in document order)
         var prev = function () {
             var prev = steps.indexOf( activeStep ) - 1,
-            prevId=activeStep.getAttribute('data-prev')||'';
+            prevId=activeStep.getAttribute('data-prev')||'';//check if data-prev exsit
             if(prevId){
                 prev = $('#'+prevId) ;
             }else{
@@ -565,7 +565,7 @@
         // `next` API function goes to next step (in document order)
         var next = function () {
             var next = steps.indexOf( activeStep ) + 1,
-            nextId=activeStep.getAttribute('data-next')||'';
+            nextId=activeStep.getAttribute('data-next')||'';//check if data-next exsit
             if(nextId){
                next = $('#'+nextId) 
             }else{
